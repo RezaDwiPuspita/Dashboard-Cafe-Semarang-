@@ -1,59 +1,52 @@
 # ☕ Dashboard Cafe Semarang
 
-Analisis Business Intelligence terhadap data transaksi **KM02 Coffee and Working Space** menggunakan pendekatan **Data Warehouse**, **ETL**, **OLAP**, **Power BI**, dan **Market Basket Analysis (Apriori Algorithm)**.
-
-Repository ini merupakan implementasi proses Business Intelligence end-to-end mulai dari pengumpulan data, perancangan data warehouse, transformasi data, visualisasi dashboard, hingga analisis pola pembelian pelanggan.
+Dashboard analisis penjualan **KM02 Coffee and Working Space** menggunakan pendekatan **Business Intelligence** dengan implementasi **Data Warehouse**, **ETL (Extract, Transform, Load)**, **OLAP**, dan **Microsoft Power BI** untuk menghasilkan insight bisnis dari data transaksi penjualan.
 
 ---
 
 # 📖 Project Overview
 
-Dataset yang digunakan merupakan data transaksi penjualan **KM02 Coffee and Working Space** selama bulan **Juni 2023** yang terdiri dari **2.762 transaksi** dan **25 atribut**. Data ini digunakan untuk mengevaluasi performa penjualan, perilaku pelanggan, metode pembayaran, serta hubungan antar produk yang sering dibeli secara bersamaan. :contentReference[oaicite:0]{index=0}
+Project ini bertujuan menganalisis data transaksi penjualan Cafe KM02 Coffee and Working Space selama **Juni 2023**. Dataset berisi **2.762 transaksi** dengan **25 atribut** yang mencakup informasi produk, waktu transaksi, metode pembayaran, hingga nilai penjualan.
+
+Melalui penerapan Data Warehouse dan dashboard interaktif, project ini membantu dalam memonitor performa penjualan serta mendukung pengambilan keputusan berbasis data.
 
 ---
 
 # 🎯 Objectives
 
-Project ini bertujuan untuk:
-
-- Menganalisis performa penjualan cafe.
 - Merancang Data Warehouse menggunakan Star Schema.
-- Melakukan proses ETL (Extract, Transform, Load).
-- Membuat dashboard interaktif menggunakan Microsoft Power BI.
-- Menganalisis pola pembelian pelanggan menggunakan Algoritma Apriori.
-- Memberikan insight bisnis yang dapat mendukung pengambilan keputusan.
+- Melakukan proses ETL terhadap data transaksi.
+- Membangun dashboard interaktif menggunakan Microsoft Power BI.
+- Melakukan analisis OLAP terhadap data penjualan.
+- Menyediakan insight bisnis untuk mendukung pengambilan keputusan.
 
 ---
 
-# 🛠 Technologies
+# 🛠️ Technologies
 
-- Python
-- Pandas
-- NumPy
-- Mlxtend
-- Streamlit
 - Microsoft Power BI
 - Power Query
-- Data Warehouse
-- OLAP
+- Python
+- Pandas
 - Draw.io
+- Microsoft Excel / CSV
 
 ---
 
-# 🗄 Data Warehouse Design
+# 🗄️ Data Warehouse
 
-Project ini menggunakan **Star Schema** sebagai model data warehouse.
+Project ini menggunakan **Star Schema** sebagai model Data Warehouse.
 
 ## Fact Table
 
-**Fact Penjualan**
+### Fact_Penjualan
 
-Berisi seluruh transaksi penjualan dengan atribut utama seperti:
+Berisi seluruh data transaksi penjualan seperti:
 
 - Receipt Number
 - Quantity
 - Gross Sales
-- Discounts
+- Discount
 - Refunds
 - Net Sales
 - Tax
@@ -74,7 +67,7 @@ Berisi seluruh transaksi penjualan dengan atribut utama seperti:
 - Menit
 - Detik
 
-### 🍽 Dim_Produk
+### 🍽️ Dim_Produk
 
 - SKU
 - Category
@@ -95,51 +88,49 @@ Berisi seluruh transaksi penjualan dengan atribut utama seperti:
 - Payment_Method
 - Event_Type
 
-### 🛍 Dim_Sales
+### 🛍️ Dim_Sales
 
 - Sales_Type_ID
 - Sales_Type
 
 ---
 
-## Star Schema
+# ⭐ Star Schema
 
-Berikut merupakan rancangan Data Warehouse yang digunakan pada project ini.
+Diagram berikut menunjukkan hubungan antara tabel fakta dan tabel dimensi yang digunakan dalam Data Warehouse.
 
 <p align="center">
-  <img src="Warehouse.drawio.png" width="800">
+  <img src="Warehouse.drawio.png" width="850">
 </p>
 
 ---
 
 # 🔄 ETL Process
 
-Tahapan ETL meliputi:
+Tahapan ETL yang dilakukan meliputi:
 
 ### Extract
 
-- Import dataset CSV
-- Membaca data transaksi cafe
+- Mengimpor dataset transaksi penjualan.
+- Membaca data dari file CSV.
 
 ### Transform
 
-- Menghapus data duplikat
-- Membersihkan data
-- Menstandarkan nilai Sales Type
-- Mengelompokkan metode pembayaran
-- Menentukan waktu puncak penjualan
-- Membuat atribut waktu
+- Membersihkan data duplikat.
+- Menstandarkan nilai Sales Type.
+- Mengelompokkan metode pembayaran.
+- Menentukan waktu puncak penjualan.
+- Membentuk atribut dimensi waktu.
 
 ### Load
 
-- Menyimpan hasil transformasi
-- Menghubungkan data ke Microsoft Power BI
+- Memuat data hasil transformasi ke Microsoft Power BI.
 
 ---
 
 # 📊 Dashboard Features
 
-Dashboard Power BI menyajikan visualisasi berikut:
+Dashboard Power BI menyajikan beberapa visualisasi, antara lain:
 
 - Total Sales
 - Total Revenue
@@ -148,62 +139,46 @@ Dashboard Power BI menyajikan visualisasi berikut:
 - Sales Trend
 - Peak Sales Time
 - Sales by Category
+- Sales by Sales Type
 - Sales by Payment Method
 - Discount Analysis
-- Sales Type Distribution
 
 ---
 
-# 📈 Business Analysis
+# 📈 Business Questions
 
-Dashboard digunakan untuk menjawab beberapa pertanyaan bisnis seperti:
+Dashboard dikembangkan untuk menjawab beberapa pertanyaan bisnis berikut.
 
 - Produk apa yang memiliki penjualan tertinggi?
-- Kapan waktu puncak penjualan?
+- Kapan waktu puncak penjualan terjadi?
 - Bagaimana distribusi penjualan berdasarkan Sales Type?
 - Bagaimana pengaruh diskon terhadap penjualan?
 - Metode pembayaran apa yang paling sering digunakan?
 
 ---
 
-# 🛒 Market Basket Analysis
+#
+# 📄 Documentation
 
-Selain dashboard Power BI, project ini juga mengimplementasikan **Market Basket Analysis** menggunakan **Algoritma Apriori**.
+Repository ini juga dilengkapi dengan laporan analisis Business Intelligence yang menjelaskan:
 
-Tahapan analisis meliputi:
-
-- Data Cleaning
-- Item Encoding
-- Pivot Table
-- Frequent Itemsets
-- Association Rules
-
-Output yang dihasilkan berupa:
-
-- Support
-- Confidence
-- Lift
-- Frequent Itemsets
-- Association Rules
-
-Insight ini dapat digunakan untuk:
-
-- Product Bundling
-- Cross Selling
-- Menu Recommendation
-- Promotional Strategy
+- Perancangan Data Warehouse
+- Proses ETL
+- Analisis OLAP
+- Dashboard Power BI
+- Insight Bisnis
 
 ---
 
 # 💡 Business Insights
 
-Beberapa insight yang diperoleh dari analisis ini antara lain:
+Melalui dashboard ini, pengguna dapat:
 
-- Produk dengan penjualan tertinggi dapat diidentifikasi untuk mendukung strategi promosi.
-- Aktivitas penjualan mencapai puncak pada jam tertentu sehingga dapat menjadi acuan penjadwalan operasional.
-- Metode pembayaran yang paling sering digunakan dapat membantu evaluasi layanan pembayaran.
-- Pola pembelian pelanggan dapat dimanfaatkan untuk menyusun paket produk dan strategi cross-selling.
-- Data warehouse dan dashboard memungkinkan pemantauan performa bisnis secara lebih efektif.
+- Mengidentifikasi produk dengan penjualan tertinggi.
+- Mengetahui waktu puncak transaksi.
+- Menganalisis distribusi penjualan berdasarkan kategori dan jenis penjualan.
+- Mengevaluasi efektivitas program diskon.
+- Menganalisis preferensi metode pembayaran pelanggan.
 
 ---
 
@@ -215,6 +190,6 @@ Universitas Islam Indonesia
 
 ---
 
-# ⭐ License
+# 📜 License
 
-Project ini dibuat untuk tujuan pembelajaran, penelitian, dan portofolio di bidang **Business Intelligence**, **Data Warehouse**, **Data Analytics**, dan **Data Mining**.
+Project ini dibuat sebagai portofolio dalam bidang **Business Intelligence**, **Data Warehouse**, **ETL**, dan **Power BI**.
